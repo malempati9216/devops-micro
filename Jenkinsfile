@@ -18,6 +18,18 @@ pipeline {
         }
 
 	} 
+	post {
+		always{
+			echo " always "
+		}
+		sucessfull{
+			echo " sucess"	
+		}
+		failure {
+			echo "failed"		
+		}
 	
+		
+	}
 }
 		
