@@ -4,10 +4,18 @@ pipeline {
 		stage ("build") {
 			steps{
 				echo "Build"	
-				echo "Test"
-				echo "integrationTest"
 		    }
+
+		stage ("Test") {
+			steps{	
+				echo "Test"	
 		}
+
+		stage ("IntTest") {
+			steps{	
+				echo "intTest"	
+		}
+
 	}	
 }
 		
