@@ -6,7 +6,6 @@ pipeline {
 				echo "Build"
 			}
 		}
-
 		stage ("Test") {
 			steps{	
 				echo "Test"	
@@ -18,11 +17,11 @@ pipeline {
 		    }
         }
 
-	} post {
+	} 
+	post {
 		always{
 			echo " im always "
 		}
-
 		sucessfull {
 			echo " im always  sucessfull "
 		}
