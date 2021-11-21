@@ -3,8 +3,8 @@ pipeline {
 	environment{		
 		mavenHome = tool 'maven'
 		dockerHome= tool "docker"
-		PATH =  "$dockerHome/bin:$mavenHome/bin:$PATH"
-	}
+		PATH =  "$dockerHome/bin:$mavenHome/bin:$PATH 
+        }
 	stages {
 		stage ("checkout") { 
 			steps{
@@ -40,3 +40,4 @@ pipeline {
 		
 	}
 }
+ 
