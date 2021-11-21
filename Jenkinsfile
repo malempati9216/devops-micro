@@ -1,13 +1,16 @@
-
 pipeline {	
 	agent any 
-	environment{		
+
+	environment{
+
 		mavenHome = tool 'maven'
+		PATH =  "$dockerHome/bin:$PATH"
 		dockerHome= tool "docker"
-		PATH =  "$dockerHome/bin:$mavenHome/bin:$PATH" 
-        }
+
+		PATH =  "$dockerHome/bin:$mavenHome/bin:$PATH"
+	}
 	stages {
-		stage ("checkout") { 
+		stage ("build") { 
 			steps{
 			   echo "Build"
 			   echo "$PATH"
@@ -17,17 +20,14 @@ pipeline {
 			   echo "JOB_NAME - $env.JOB_NAME"
 			}
 		}
-		stage ("Compile") {
-			steps{	
-				sh "mvn clean compile"
-		    }
 		stage ("Test") {
 			steps{	
-				sh " mvn test"
+				echo "Test"	
 		    }
-		stage ("intTest") {
+        }
+		stage ("IntTest") {
 			steps{	
-				sh " mvn failsafe:integration-test failsafe:verify"
+		 		echo "intTest"	
 		    }
         }
 	} 
@@ -41,5 +41,7 @@ pipeline {
 		failure {
 			echo "failed"		
 		}
+	
+		
 	}
 }
