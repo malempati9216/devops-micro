@@ -23,7 +23,11 @@ pipeline {
 		    }
 		stage ("Test") {
 			steps{	
-				sh "test"
+				sh " mvn test"
+		    }
+		stage ("intTest") {
+			steps{	
+				sh " mvn failsafe:integration-test failsafe:verify"
 		    }
         }
 	} 
@@ -41,4 +45,3 @@ pipeline {
 		
 	}
 }
- 
