@@ -1,11 +1,8 @@
 pipeline {	
 	agent any 
-
-	environment{
-		
+	environment{		
 		mavenHome = tool 'maven'
 		dockerHome= tool "docker"
-
 		PATH =  "$dockerHome/bin:$mavenHome/bin:$PATH"
 	}
 	stages {
@@ -28,12 +25,6 @@ pipeline {
 				sh "test"
 		    }
         }
-		stage ("IntTest") {
-			steps{	
-		 		sh "mvn failsafe:intTest-test failsafe:verify"	
-		    }
-        }
-
 	} 
 	post {
 		always{
